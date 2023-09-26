@@ -7,13 +7,13 @@ workflows:
       android_signing:
         - Testing App
       groups:
-        - google_play
+        - email
       vars:
         PACKAGE_NAME: "com.example.testingapplication"
     scripts:
-      - name: "/Users/gayanmadhusanka/Library/Android/sdk"
+      - name: Set Android SDK location
         script: | 
-          echo "sdk.dir=$ANDROID_SDK_ROOT" > "$CM_BUILD_DIR/android/local.properties"
+          echo "sdk.dir=/Users/gayanmadhusanka/Library/Android/sdk" > "$CM_BUILD_DIR/android/local.properties"
       - name: Build Android release
         script: | 
           LATEST_GOOGLE_PLAY_BUILD_NUMBER=$(google-play get-latest-build-number --package-name "$PACKAGE_NAME")
@@ -33,7 +33,3 @@ workflows:
         notify:
           success: true
           failure: false
-      google_play:
-        credentials: $GCLOUD_SERVICE_ACCOUNT_CREDENTIALS
-        track: internal
-        submit_as_draft: true
