@@ -11,7 +11,7 @@ workflows:
       vars:
         PACKAGE_NAME: "com.example.testingapplication"
     scripts:
-      - name: Set Android SDK location
+      - name: "/Users/gayanmadhusanka/Library/Android/sdk"
         script: | 
           echo "sdk.dir=$ANDROID_SDK_ROOT" > "$CM_BUILD_DIR/android/local.properties"
       - name: Build Android release
@@ -29,8 +29,7 @@ workflows:
     publishing:
       email:
         recipients:
-          - user_1@example.com
-          - user_2@example.com
+          - gayanmadushanka541@gmail.com
         notify:
           success: true
           failure: false
